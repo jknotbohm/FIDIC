@@ -78,7 +78,7 @@ if iteration > 1 % skip before first displacement estimation
     
     if prod(single(sSpacing1 == 2*dm)) % condition if spacing = 2*dm
       
-        idx = (find(prod(single(sSpacing == 2*dm),2))-1):iteration;
+        idx = min(find(prod(single(sSpacing == 2*dm),2))-1):iteration;
         if length(idx) > 2
             dSSE = diff(SSE(idx)); % calculate difference
             dSSE = dSSE/dSSE(1); % normalize difference
@@ -92,7 +92,7 @@ if iteration > 1 % skip before first displacement estimation
         
     % condition if spacing is the target value, dm voxels
     elseif  prod(single(sSpacing1 == dm))
-        idx = (find(prod(single(sSpacing == dm),2))-1):iteration;
+        idx = min(find(prod(single(sSpacing == dm),2))-1):iteration;
         
         if length(idx) > 2
             dSSE = diff(SSE(idx));
